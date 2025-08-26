@@ -1,0 +1,29 @@
+{
+  "name": "microfoo",
+  "private": true,
+  "workspaces": [
+    "./api-gateway",
+    "./user-service",
+    "./order-service"
+  ],
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "npm-run-all -p start:dev:*",
+    "start:dev:gateway": "npm --workspace api-gateway run start:dev",
+    "start:dev:user": "npm --workspace user-service run start:dev",
+    "start:dev:order": "npm --workspace order-service run start:dev",
+    "lint": "eslint \"{api-gateway,user-service,order-service}/src/**/*.ts\"",
+    "format": "prettier --write \"{api-gateway,user-service,order-service}/src/**/*.ts\""
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.0",
+    "@types/jest": "^30.0.0",
+    "eslint": "^9.18.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.4.2"
+  }
+}
