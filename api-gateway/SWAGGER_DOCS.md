@@ -6,12 +6,13 @@ This document describes the Swagger/OpenAPI implementation for the API Gateway s
 
 The API Gateway now includes comprehensive Swagger documentation that documents all HTTP endpoints exposed by the gateway. The documentation is available at:
 
-- **Swagger UI**: http://localhost:3000/api-docs
-- **JSON Schema**: http://localhost:3000/api-docs-json
+- **Swagger UI**: <http://localhost:3000/api-docs>
+- **JSON Schema**: <http://localhost:3000/api-docs-json>
 
 ## Features Implemented
 
 ### 1. Swagger Configuration
+
 - **Title**: "API Gateway"
 - **Description**: "HTTP entry point for User and Order microservices"
 - **Version**: "1.0"
@@ -21,21 +22,25 @@ The API Gateway now includes comprehensive Swagger documentation that documents 
 ### 2. Endpoint Documentation
 
 #### Authentication Endpoints
+
 - `POST /login` - User authentication with username/password
 - Returns JWT token and user information
 - Comprehensive validation with class-validator decorators
 
 #### User Endpoints
+
 - `GET /users` - Retrieve all users (Admin only)
 - Requires JWT authentication and admin role
 - Proxies to user-service via NATS
 
 #### Order Endpoints
+
 - `GET /orders` - Retrieve all orders (Admin and User roles)
 - Requires JWT authentication with admin or user role
 - Proxies to order-service via NATS
 
 ### 3. DTOs and Validation
+
 - **LoginDto**: Input validation for authentication
 - **LoginResponseDto**: Structured response for login endpoint
 - **UserDto**: User data structure documentation
@@ -43,6 +48,7 @@ The API Gateway now includes comprehensive Swagger documentation that documents 
 - **ErrorResponseDto**: Standard error response format
 
 ### 4. Security Documentation
+
 - JWT Bearer token authentication
 - Role-based access control (RBAC)
 - Detailed error responses for unauthorized/forbidden access
@@ -73,13 +79,14 @@ The API Gateway now includes comprehensive Swagger documentation that documents 
 ## Usage
 
 1. Start the API Gateway: `npm run start:dev`
-2. Navigate to http://localhost:3000/api-docs
+2. Navigate to <http://localhost:3000/api-docs>
 3. Use the "Authorize" button to test JWT-protected endpoints
 4. Test endpoints directly from the Swagger UI
 
 ## Architecture Compliance
 
 This implementation follows the project's architectural patterns:
+
 - ✅ Swagger only on HTTP-facing gateway service
 - ✅ No impact on NATS microservice communication
 - ✅ Preserves existing RBAC and JWT authentication
